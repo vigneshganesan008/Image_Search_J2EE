@@ -1,11 +1,14 @@
 package com.example.Image_Search_J2EE;
 
-import java.io.*;
-import java.sql.*;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.http.*;
-import javax.servlet.annotation.*;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+import java.sql.*;
 
 @WebServlet(name = "helloServlet", value = "/hello-servlet")
 public class HelloServlet extends HttpServlet {
@@ -25,8 +28,6 @@ public class HelloServlet extends HttpServlet {
     }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-
-
 
         String username = request.getParameter("username");
         String password = request.getParameter("password");
@@ -50,6 +51,8 @@ public class HelloServlet extends HttpServlet {
                     Cookie usernameCookie = new Cookie("username", request.getParameter("username"));
                     usernameCookie.setMaxAge(60*60*24);
                     response.addCookie(usernameCookie);
+                    RequestDispatcher req = request.getRequestDispatcher("MainPage.jsp");
+                    req.include(request, response);
                     System.out.println("Password Correct");
                 }
 

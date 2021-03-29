@@ -2,11 +2,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Registration Form</title>
+    <title>Sign Up</title>
 </head>
 <body>
 <div>
-    <!--<h3>Registration Form</h3>-->
     <br>
     <form action="signup-servlet" method="post">
         <table style="with: 50%">

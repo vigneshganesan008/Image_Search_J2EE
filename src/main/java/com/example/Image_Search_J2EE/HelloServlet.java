@@ -11,6 +11,7 @@ import javax.servlet.annotation.*;
 public class HelloServlet extends HttpServlet {
     Connection myConnection = null;
     public void init() {
+
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             myConnection = DriverManager.getConnection("jdbc:mysql://localhost:3306/image_search_j2ee", "root", "password");
@@ -18,14 +19,12 @@ public class HelloServlet extends HttpServlet {
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         }
-        catch (SQLException throwables) {
-            throwables.printStackTrace();
+        catch (SQLException e) {
+            e.printStackTrace();
         }
-
     }
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-
 
         String username = request.getParameter("username");
         String password = request.getParameter("password");
@@ -35,11 +34,11 @@ public class HelloServlet extends HttpServlet {
             ResultSet myRs = null;
 
             try {
-                //System.out.println(getConnection());
                 String pass =null;
                 String sql = "select password from users where username = '"+username+"';";
                 myStmt = myConnection.createStatement();
                 myRs = myStmt.executeQuery(sql);
+
                 if(myRs.next()) {
                     pass = myRs.getString("password");
                 }
@@ -47,18 +46,14 @@ public class HelloServlet extends HttpServlet {
                 if (password.equals(pass)){
                     System.out.println("Password Correct");
                 }
+
                 else{
                     System.out.println("Password InCorrect : " + pass + " : " + password);
                 }
 
-            } catch (SQLException throwables) {
-                throwables.printStackTrace();
+            } catch (SQLException e) {
+                e.printStackTrace();
             }
-        }
-        else
-        {
-            //RequestDispatcher req = request.getRequestDispatcher("register_4.jsp");
-            //req.forward(request, response);
         }
     }
 

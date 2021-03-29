@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="Image_Search_J2EE:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>Image_Search_J2EE</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="Image_Search_J2EE-1.0-SNAPSHOT.war">
+      <element id="artifact" artifact-name="Image_Search_J2EE:war exploded" />
+    </root>
+  </artifact>
+</component>

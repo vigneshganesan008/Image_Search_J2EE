@@ -24,10 +24,13 @@ public class HelloServlet extends HttpServlet {
         }
     }
 
-    public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+
+
 
         String username = request.getParameter("username");
         String password = request.getParameter("password");
+
         if(!username.isEmpty() && !password.isEmpty())
         {
             Statement myStmt = null;
@@ -44,6 +47,9 @@ public class HelloServlet extends HttpServlet {
                 }
 
                 if (password.equals(pass)){
+                    Cookie usernameCookie = new Cookie("username", request.getParameter("username"));
+                    usernameCookie.setMaxAge(60*60*24);
+                    response.addCookie(usernameCookie);
                     System.out.println("Password Correct");
                 }
 

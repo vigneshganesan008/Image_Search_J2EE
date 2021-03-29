@@ -7,7 +7,7 @@
 <body>
 <div>
     <!--<h3>Login to continue</h3>-->
-    <form action="hello-servlet" method="post">
+    <form action="hello-servlet" method="get">
         <table style="with: 50%">
 
             <tr>

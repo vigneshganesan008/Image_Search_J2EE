@@ -3,8 +3,10 @@
 <html>
 <head>
     <title>Sign Up</title>
-    <link href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/css/bootstrap.min.css' rel='stylesheet' type='text/css'>
-    <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css' rel='stylesheet' type='text/css'>
+    <link href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/css/bootstrap.min.css'
+          rel='stylesheet' type='text/css'>
+    <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css' rel='stylesheet'
+          type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
     <style>
         body {
@@ -184,12 +186,12 @@
                         </div>
                         <div class="form-group">
                             <label class="form-control-label">Password</label>
-                            <input type="password" class="form-control" name="password" i >
+                            <input type="password" class="form-control" name="password" i>
                         </div>
 
                         <div class="form-group">
                             <label class="form-control-label">Confirm Password</label>
-                            <input type="password" class="form-control" name="c_password" i >
+                            <input type="password" class="form-control" name="c_password" i>
                         </div>
 
                         <div class="form-group">
@@ -203,7 +205,10 @@
                             </div>
                             <div class="col-lg-6 login-btm login-button">
                                 <!--<button type="submit" class="btn btn-outline-primary">Register</button>-->
-                                <a href="index.jsp"> <button type="submit" value="Signup" class="btn btn-outline-primary">Register</button></a>
+                                <a href="index.jsp">
+                                    <button type="submit" value="Signup" class="btn btn-outline-primary">Register
+                                    </button>
+                                </a>
 
                             </div>
                         </div>

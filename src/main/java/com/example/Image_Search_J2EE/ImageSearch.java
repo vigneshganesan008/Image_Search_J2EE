@@ -8,25 +8,24 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.sql.DriverManager;
-import java.sql.SQLException;
 
 @WebServlet(name = "ImageSearchServlet", value = "/image_search-servlet")
 public class ImageSearch extends HttpServlet {
-    /*Cookie cookie = null;
-    Cookie[] cookies = null;
-    public String loggedInUser;
-    public void init() {*/
-
-
-
-    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-
-      /*  // Get an array of Cookies associated with this domain
-        cookies = request.getCookies();
-        System.out.println(cookie.getName());
-        System.out.println(cookie.getValue());*/
+    public void init() {
     }
 
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+    }
 
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        Cookie[] cookies = request.getCookies();
+        if (cookies != null) {
+            for (Cookie cookie : cookies) {
+                cookie.setMaxAge(0);
+            }
+            System.out.println("Cookie deleted");
+        }
+        RequestDispatcher req = request.getRequestDispatcher("index.jsp");
+        req.include(request, response);
+    }
 }

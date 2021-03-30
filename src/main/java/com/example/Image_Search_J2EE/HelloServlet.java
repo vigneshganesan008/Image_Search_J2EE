@@ -13,6 +13,7 @@ import java.sql.*;
 @WebServlet(name = "helloServlet", value = "/hello-servlet")
 public class HelloServlet extends HttpServlet {
     Connection myConnection = null;
+
     public void init() {
 
         try {
@@ -21,42 +22,47 @@ public class HelloServlet extends HttpServlet {
 
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
-        }
-        catch (SQLException e) {
+        } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
-    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 
         String username = request.getParameter("username");
         String password = request.getParameter("password");
 
-        if(!username.isEmpty() && !password.isEmpty())
-        {
+        if (!username.isEmpty() && !password.isEmpty()) {
             Statement myStmt = null;
             ResultSet myRs = null;
 
             try {
-                String pass =null;
-                String sql = "select password from users where username = '"+username+"';";
+                String pass = null;
+                String sql = "select password from users where username = '" + username + "';";
                 myStmt = myConnection.createStatement();
                 myRs = myStmt.executeQuery(sql);
 
-                if(myRs.next()) {
+                if (myRs.next()) {
                     pass = myRs.getString("password");
                 }
 
-                if (password.equals(pass)){
+                if (password.equals(pass)) {
+                    Cookie[] cookies = request.getCookies();
+                    if (cookies != null) {
+                        for (Cookie cookie : cookies) {
+                            cookie.setMaxAge(0);
+                        }
+                        System.out.println("Cookie deleted");
+                    }
+
+
                     Cookie usernameCookie = new Cookie("username", request.getParameter("username"));
-                    usernameCookie.setMaxAge(60*60*24);
+                    usernameCookie.setMaxAge(60 * 60 * 24);
                     response.addCookie(usernameCookie);
                     RequestDispatcher req = request.getRequestDispatcher("MainPage.jsp");
                     req.include(request, response);
                     System.out.println("Password Correct");
-                }
-
-                else{
+                } else {
                     System.out.println("Password InCorrect : " + pass + " : " + password);
                 }
 

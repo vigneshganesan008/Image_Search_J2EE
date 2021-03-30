@@ -2,8 +2,10 @@
 <html>
 <head>
     <title>Login</title>
-    <link href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/css/bootstrap.min.css' rel='stylesheet' type='text/css'>
-    <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css' rel='stylesheet' type='text/css'>
+    <link href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/css/bootstrap.min.css'
+          rel='stylesheet' type='text/css'>
+    <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css' rel='stylesheet'
+          type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
     <style>
         body {
@@ -169,14 +171,14 @@
 
             <div class="col-lg-12 login-form">
                 <div class="col-lg-12 login-form">
-                    <form action="hello-servlet" method="get">
+                    <form action="hello-servlet" method="post">
                         <div class="form-group">
                             <label class="form-control-label">Username</label>
                             <input type="text" class="form-control" name="username">
                         </div>
                         <div class="form-group">
                             <label class="form-control-label">Password</label>
-                            <input type="password" class="form-control" name="password" i >
+                            <input type="password" class="form-control" name="password" i>
                         </div>
 
                         <div class="col-lg-12 loginbttm">
@@ -185,7 +187,9 @@
                             </div>
                             <div class="col-lg-6 login-btm login-button">
                                 <button type="submit" class="btn btn-outline-primary">Login</button>
-                                <a href="Signup.jsp"> <button type="button" value="Signup" class="btn btn-outline-primary">Signup</button></a>
+                                <a href="Signup.jsp">
+                                    <button type="button" value="Signup" class="btn btn-outline-primary">Signup</button>
+                                </a>
                             </div>
                         </div>
                     </form>

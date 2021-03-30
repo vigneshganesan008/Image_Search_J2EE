@@ -24,7 +24,7 @@ public class DBConnect {
                 String password = myRs.getString("password");
                 String email = myRs.getString("email");
 
-                System.out.println(username+"\n"+password+"\n"+email);
+                System.out.println(username + "\n" + password + "\n" + email);
 
             }
             // execute query

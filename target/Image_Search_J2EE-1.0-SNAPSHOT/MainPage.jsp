@@ -25,22 +25,26 @@
             border-width: 2px;
             border-color: gray;
         }
+
         .header {
             text-align: center;
         }
+
         p {
             font-size: 28px;
         }
 
-        .search{
-            display:flex;
+        .search {
+            display: flex;
             padding: 10px 0;
 
         }
-        .srchBtn{
+
+        .srchBtn {
             margin-left: 10px;
         }
-        .right-align{
+
+        .right-align {
             float: right;
             padding: 10px 0;
         }
@@ -48,12 +52,12 @@
 </head>
 <body>
 <%
-    String username= null;
+    String username = null;
     Cookie[] cookies = request.getCookies();
-    if(cookies != null){
-        for(Cookie cookie : cookies){
-            if(cookie.getName().equals("username"))
-                 username = cookie.getValue();
+    if (cookies != null) {
+        for (Cookie cookie : cookies) {
+            if (cookie.getName().equals("username"))
+                username = cookie.getValue();
 
         }
     }
@@ -67,11 +71,16 @@
             <a class="navbar-brand ">Image Search</a>
 
         </div>
-        <div class="navbar-brand right-align" >
-            Signed in as : <%=username%>&nbsp;&nbsp;
-            <button type="button" class="btn btn-danger">Logout</button>
-        </div>
+        <form action="image_search-servlet" method="post">
+            <div class="navbar-brand right-align">
+                Signed in as : <%=username%>&nbsp;&nbsp;
 
+                <button type="submit" class="btn btn-danger">
+                    Logout
+                </button>
+
+            </div>
+        </form>
 
 
     </div>

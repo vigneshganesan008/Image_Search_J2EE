@@ -59,6 +59,9 @@ public class Signup extends HttpServlet {
                 myStmt.setString(3, email);
 
                 myStmt.execute();
+
+                RequestDispatcher req = request.getRequestDispatcher("index.jsp");
+                req.include(request, response);
             }
         }
         catch (Exception e){

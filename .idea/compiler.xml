@@ -10,7 +10,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="Image_Search_J2EE" target="1.8" />
+      <module name="Image_Search_J2EE" target="11" />
     </bytecodeTargetLevel>
   </component>
 </project>

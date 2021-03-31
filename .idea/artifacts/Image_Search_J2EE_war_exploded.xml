@@ -13,6 +13,10 @@
         <element id="directory" name="classes">
           <element id="module-output" name="Image_Search_J2EE" />
         </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="Maven: org.json:json:20140107" />
+          <element id="library" level="project" name="Maven: commons-io:commons-io:2.7" />
+        </element>
       </element>
       <element id="directory" name="META-INF">
         <element id="file-copy" path="$PROJECT_DIR$/target/Image_Search_J2EE-1.0-SNAPSHOT/META-INF/MANIFEST.MF" />

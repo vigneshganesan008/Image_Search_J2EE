@@ -48,6 +48,14 @@
             float: right;
             padding: 10px 0;
         }
+        .form-control1:focus {
+            border-color: inherit;
+            box-shadow: none;
+            border-bottom: 2px solid #0DB8DE;
+            outline: 0;
+            background-color: #1A2226;
+            color: #ECF0F5;
+        }
     </style>
 </head>
 <body>
@@ -89,8 +97,10 @@
 
             <form action="image_search-servlet" method="get">
                 <div class="search">
-                    <input class="form-control" type="text"
-                           placeholder="Enter your Image Url here" aria-label="Search">
+                    <input class="form-control" type="text" name="url"
+                           placeholder="Enter your Image Url here" aria-label="Search"> &nbsp;&nbsp;
+                    <input maxlength="3" size="5" type="text" name="k" class="form-control1"
+                           placeholder="Top k" aria-label="Top_K">
                     <div class="srchBtn">
                         <button class="btn btn-outline-success" type="submit">Search</button>
                     </div>

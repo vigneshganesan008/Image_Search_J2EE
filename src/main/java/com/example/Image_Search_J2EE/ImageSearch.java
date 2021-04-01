@@ -18,10 +18,7 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
-import java.util.Base64;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 @WebServlet(name = "ImageSearchServlet", value = "/image_search-servlet")
 public class ImageSearch extends HttpServlet {
@@ -52,8 +49,23 @@ public class ImageSearch extends HttpServlet {
                 String encoded_image = object.getJSONArray("Images").getString(i);
                 byte[] s = encoded_image.getBytes(StandardCharsets.US_ASCII);
                 Base64.Decoder decoder = Base64.getDecoder();
-                FileUtils.writeByteArrayToFile(new File("C:\\Users\\Vicky\\Documents\\Projects\\Image_Search_J2EE\\Downloaded_Images\\"+i+".jpg"), decoder.decode(s));
+                FileUtils.writeByteArrayToFile(new File("C:\\Users\\Vicky\\Documents\\Projects\\Image_Search_J2EE\\src\\main\\webapp\\images\\"+i+".jpg"), decoder.decode(s));
             }
+
+            List imageUrlList = new ArrayList();
+            File imageDir = new File("C:\\Users\\Vicky\\Documents\\Projects\\Image_Search_J2EE\\src\\main\\webapp\\images");
+            for(File imageFile : imageDir.listFiles()){
+                String imageFileName = imageFile.getName();
+
+                // add this images name to the list we are building up
+                imageUrlList.add("images/"+imageFileName);
+
+            }
+            System.out.println(imageUrlList);
+            request.setAttribute("imageUrlList", imageUrlList);
+
+            RequestDispatcher req = request.getRequestDispatcher("MainPage.jsp");
+            req.include(request, response);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

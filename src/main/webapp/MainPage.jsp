@@ -1,3 +1,5 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <%--
   Created by IntelliJ IDEA.
   User: arvin
@@ -110,6 +112,10 @@
         </div>
     </div>
 </nav>
-
 </body>
+
+<c:forEach var="image" items="${imageUrlList}">
+    <img src="${image}">
+</c:forEach>
+
 </html>

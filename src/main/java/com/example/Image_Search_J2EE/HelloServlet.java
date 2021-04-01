@@ -1,5 +1,7 @@
 package com.example.Image_Search_J2EE;
 
+import org.apache.commons.io.FileUtils;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -7,8 +9,11 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.io.File;
 import java.io.IOException;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @WebServlet(name = "helloServlet", value = "/hello-servlet")
 public class HelloServlet extends HttpServlet {
@@ -59,6 +64,7 @@ public class HelloServlet extends HttpServlet {
                     Cookie usernameCookie = new Cookie("username", request.getParameter("username"));
                     usernameCookie.setMaxAge(60 * 60 * 24);
                     response.addCookie(usernameCookie);
+                    FileUtils.cleanDirectory(new File("C:\\Users\\Vicky\\Documents\\Projects\\Image_Search_J2EE\\src\\main\\webapp\\images"));
                     RequestDispatcher req = request.getRequestDispatcher("MainPage.jsp");
                     req.include(request, response);
                     System.out.println("Password Correct");
@@ -69,6 +75,8 @@ public class HelloServlet extends HttpServlet {
             } catch (SQLException e) {
                 e.printStackTrace();
             }
+
+
         }
     }
 

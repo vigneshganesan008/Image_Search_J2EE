@@ -18,7 +18,7 @@ import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.nio.charset.StandardCharsets;
-import java.util.*;
+import java.util.*;;
 
 @WebServlet(name = "ImageSearchServlet", value = "/image_search-servlet")
 public class ImageSearch extends HttpServlet {
@@ -31,6 +31,7 @@ public class ImageSearch extends HttpServlet {
         String url = request.getParameter("url");
         String k =  request.getParameter("k");
         String inputJson = "{ \"url\":\"" + url + "\", \"k\":"+k+" }";
+        FileUtils.cleanDirectory(new File("C:\\Users\\Vicky\\Documents\\Projects\\Image_Search_J2EE\\src\\main\\webapp\\images"));
 
         var image_request = HttpRequest.newBuilder()
                 .uri(URI.create(postEndpoint))
@@ -42,14 +43,16 @@ public class ImageSearch extends HttpServlet {
         try {
             var image_response = client.send(image_request, HttpResponse.BodyHandlers.ofString());
             System.out.println(image_response.statusCode());
-
+            Random random = new Random();
             JSONArray json_data = new JSONArray(image_response.body());
             JSONObject object = json_data.getJSONObject(0);
             for(int i=0; i < Integer.parseInt(k); i++) {
                 String encoded_image = object.getJSONArray("Images").getString(i);
                 byte[] s = encoded_image.getBytes(StandardCharsets.US_ASCII);
                 Base64.Decoder decoder = Base64.getDecoder();
-                FileUtils.writeByteArrayToFile(new File("C:\\Users\\Vicky\\Documents\\Projects\\Image_Search_J2EE\\src\\main\\webapp\\images\\"+i+".jpg"), decoder.decode(s));
+
+                String fileName=String.valueOf(random.nextInt(10000));
+                FileUtils.writeByteArrayToFile(new File("C:\\Users\\Vicky\\Documents\\Projects\\Image_Search_J2EE\\src\\main\\webapp\\images\\"+fileName+".jpg"), decoder.decode(s));
             }
 
             List imageUrlList = new ArrayList();

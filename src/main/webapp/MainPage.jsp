@@ -12,8 +12,9 @@
 <html>
 <head>
     <title>Image Search</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <link rel="stylesheet"
@@ -112,10 +113,9 @@
         </div>
     </div>
 </nav>
-</body>
-
 <c:forEach var="image" items="${imageUrlList}">
     <img src="${image}">
 </c:forEach>
+</body>
 
 </html>

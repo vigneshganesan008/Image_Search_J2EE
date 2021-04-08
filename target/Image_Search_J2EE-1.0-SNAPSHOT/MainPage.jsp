@@ -1,19 +1,19 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
-<%--
-  Created by IntelliJ IDEA.
-  User: arvin
-  Date: 29/03/2021
-  Time: 23:00
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
+<%
+    response.setHeader("Pragma", "No-cache");
+    response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+    response.setDateHeader("Expires", -1);
+%>
+
 <!DOCTYPE html>
 <html>
 <head>
     <title>Image Search</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <link rel="stylesheet"
@@ -112,10 +112,9 @@
         </div>
     </div>
 </nav>
-</body>
-
 <c:forEach var="image" items="${imageUrlList}">
-    <img src="${image}">
+    <img src="${image}" />
 </c:forEach>
+</body>
 
 </html>

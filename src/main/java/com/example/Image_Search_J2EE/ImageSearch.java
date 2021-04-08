@@ -43,16 +43,17 @@ public class ImageSearch extends HttpServlet {
         try {
             var image_response = client.send(image_request, HttpResponse.BodyHandlers.ofString());
             System.out.println(image_response.statusCode());
-            Random random = new Random();
+
+            //Random random = new Random();
+            //String randomNumber = String.valueOf(random.nextInt(10000));
+
             JSONArray json_data = new JSONArray(image_response.body());
             JSONObject object = json_data.getJSONObject(0);
             for(int i=0; i < Integer.parseInt(k); i++) {
                 String encoded_image = object.getJSONArray("Images").getString(i);
                 byte[] s = encoded_image.getBytes(StandardCharsets.US_ASCII);
                 Base64.Decoder decoder = Base64.getDecoder();
-
-                String fileName=String.valueOf(random.nextInt(10000));
-                FileUtils.writeByteArrayToFile(new File("C:\\Users\\Vicky\\Documents\\Projects\\Image_Search_J2EE\\src\\main\\webapp\\images\\"+fileName+".jpg"), decoder.decode(s));
+                FileUtils.writeByteArrayToFile(new File("C:\\Users\\Vicky\\Documents\\Projects\\Image_Search_J2EE\\src\\main\\webapp\\images\\"+i+".jpg"), decoder.decode(s));
             }
 
             List imageUrlList = new ArrayList();
@@ -66,7 +67,8 @@ public class ImageSearch extends HttpServlet {
             }
             System.out.println(imageUrlList);
             request.setAttribute("imageUrlList", imageUrlList);
-
+            //request.setAttribute("randomNumber", randomNumber);
+            Thread.sleep(3000);
             RequestDispatcher req = request.getRequestDispatcher("MainPage.jsp");
             req.include(request, response);
         } catch (InterruptedException e) {

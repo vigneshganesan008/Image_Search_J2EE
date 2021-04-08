@@ -1,13 +1,12 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
-<%--
-  Created by IntelliJ IDEA.
-  User: arvin
-  Date: 29/03/2021
-  Time: 23:00
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
+<%
+    response.setHeader("Pragma", "No-cache");
+    response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+    response.setDateHeader("Expires", -1);
+%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -114,7 +113,7 @@
     </div>
 </nav>
 <c:forEach var="image" items="${imageUrlList}">
-    <img src="${image}">
+    <img src="${image}" />
 </c:forEach>
 </body>
 
